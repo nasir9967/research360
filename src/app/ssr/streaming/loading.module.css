@@ -1,0 +1,30 @@
+.spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingContainer {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border: 2px dashed;
+}
+
+.postsLoading {
+  background-color: #f0f8ff;
+  border-color: #0070f3;
+}
+
+.commentsLoading {
+  background-color: #fff0f5;
+  border-color: #ff6b6b;
+}
