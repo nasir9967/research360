@@ -12,7 +12,7 @@ const pieOptions = {
   },
   title: {
     text: "Shares Offered", // Chart title
-    align: "left", // Align title to the left
+    align: "left" as const, // Align title to the left - fix TypeScript error
     style: { fontSize: "22px", fontWeight: "bold", color: "#222" }, // Title style
   },
   labels: ["QIB", "NIB", "Retail", "Employee", "Others"], // Labels for each slice
@@ -23,7 +23,7 @@ const pieOptions = {
     fontWeight: 500,
     labels: { colors: ["#222"] }, // Legend text color
     // Custom legend formatter: show name, value (Indian format), and percent
-    formatter: function (seriesName: string, opts: any) {
+    formatter: function (seriesName: string, opts: { seriesIndex: number; w: { config: { colors: string[] } } }) {
       const data = [2903910, 2217233, 5173543, 107142, 0];
       const percent = [27.92, 21.32, 49.74, 1.03, 0];
       const index = opts.seriesIndex;
@@ -37,7 +37,7 @@ const pieOptions = {
     enabled: true, // Show tooltip on hover
     y: {
       // Custom tooltip: show label and percent
-      formatter: function (val: number, opts: any) {
+      formatter: function (val: number, opts: { dataPointIndex: number }) {
         const percent = [27.92, 21.32, 49.74, 1.03, 0];
         const index = opts.dataPointIndex;
         return `${pieOptions.labels[index]}: <b>${percent[index].toFixed(2)}%</b>`;
